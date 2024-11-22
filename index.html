@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Retargeting Video</title>
+<body style="background-color:#FDFEFE  ; color:black">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1 {font-family: "Raleway", Arial, sans-serif}
+h1 {letter-spacing: 6px}
+.w3-row-padding img {margin-bottom: 12px}
+</style>
+</head>
+<body>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1200px">
+
+<!-- Header -->
+<header class="w3-panel w3-center w3-opacity" style="padding:28px 16px 5px 2px">  
+  <h4 style="color:darkmagenta;font-size:34.0pt; font-weight: bold;">Retargeting Video with an End-to-end Framework</h4>
+  
+  <h4 class="w3-xlarge">Thi-Ngoc-Hanh Le, HuiGuang Huang, Yi-Ru Chen, and Tong-Yee Lee, Senior Member, IEEE</h4>
+  <h4 class="w3-xlarge">CGVSL - National Cheng Kung University</h4>
+  
+  <div class="w3-padding-32"> 
+    <div class="w3-bar w3-border", style="background-color:cadetblue; font-weight: bold">
+      <a href="index.html" class="w3-bar-item w3-button w3-light-grey" style="background-color: darkgreen;">Home</a> 
+      <a href="#id_demo_video" class="w3-bar-item w3-button">Demo video</a>
+      <a href="#id_comparison" class="w3-bar-item w3-button">Comparisons</a>      
+      <a href="#id_results" class="w3-bar-item w3-button">Videos Results</a>      
+	    <a href="#id_comparison_image" class="w3-bar-item w3-button">Images Results</a>
+      <a href="TVCG_Video_Resizing_manuscript.pdf" class="w3-bar-item w3-button">Paper</a>
+    </div>
+  </div>  
+</header>
+
+        
+        <table align='center'; width=1300px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Uptown_3.mp4"	
+                      width="500px">
+                    </video>			
+                    <h6>Input video</h6>
+                  </center>  
+              </td>
+              
+              <td width="350px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Uptown_3_R07.mp4"	
+                      width="350px">                      
+                    </video>			
+                    <h6>Retarget to 0.7 x width</h6>
+                  </center>  
+              </td>              
+              
+              <td width="250px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/Uptown_3_R05.mp4"	
+                        width="250px">
+                      </video>			
+                      <h6>Retarget to 0.5 x width</h6>
+                    </center>                
+              </td>
+              <td width="160px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Uptown_3_R03.mp4"	
+                      width="160px"; height ="280px">
+                    </video>			
+                    <h6>Retarget to 0.3 x width</h6>
+                  </center>                
+            </td>
+            </tr>
+         </table>
+        <table align='center'; width=1000px; > 		 	
+          <tr>
+            <td width="800px">
+              <justify><h4 style="color:rgb(150, 101, 150);font-size:24.0pt; font-weight: bold">Abstract</h4></justify>              
+              <hr> 
+                <h5 align='justify',style='font-size:20; font-weight: bold'>	Video holds significance in computer graphics applications.
+                   Because of the heterogeneous of digital devices, retargeting videos becomes an essential function to enhance user viewing experience in such applications. 
+                   In the research of video retargeting, preserving the relevant visual content in videos, avoiding flicking, and processing time are the vital challenges. 
+                   Extending image retargeting techniques to the video domain is challenging due to the high running time. 
+                   Prior work of video retargeting mainly utilizes time-consuming preprocessing to analyze frames. 
+                  Plus, being tolerant of different video content, avoiding important objects from shrinking, and the ability to play with arbitrary ratios are the 
+                  limitations that need to be resolved in these systems requiring investigation. In this paper, we present an end-to-end RETVI method to retarget videos 
+                  to arbitrary aspect ratios. We eliminate the computational bottleneck in the conventional approaches by designing RETVI with two modules, 
+                  content feature analyzer (CFA) and adaptive deforming estimator (ADE). The extensive experiments and evaluations show that our system outperforms
+                   previous work in quality and running time. </h5>
+                <hr>
+          <h5 align='justify';style='font-size:16.0pt; font-weight: bold'> Keywords -- video retargeting, RETVI, analyze video, deforming, grid movement, pixel movement </h5>
+              <br>	 	  		            	
+		  		</tr>
+   
+			  </tbody></table>
+        
+        <table align='center'; width="1000px">                    
+          <td width="1200px">
+            <tr>                
+                <justify><h4 style="color:rgb(150, 101, 150);font-size:24.0pt; font-weight: bold"><a id="id_demo_video">Demo video</a></h4></justify>
+                <hr>                 
+              </tr>
+            </td>    
+        
+       </table>
+   
+        <table align='center'; width=1200px; style="color:burlywood">
+          <tr>	          			    	
+              <td width="1000px">
+                <center> 
+                  
+                        <iframe width="1000" height="550"  src="https://www.youtube.com/embed/NOYvA2zCxQ0?autoplay=0&mute=0">                      
+                  </iframe>										                         
+                        
+                  </center>    
+              </td>		                                  
+               
+          </tr>
+          </table>
+
+         <table align='center'; width="1000px">                    
+            <td width="1000px">
+              <tr>                
+                  <justify><h4 style="color:rgb(150, 101, 150);font-size:24.0pt; font-weight: bold"><a id="id_results">Video Retargeting Results</a></h4></justify>
+                  <hr>                 
+                </tr>
+              </td>    
+          
+         </table>
+     
+     
+                  
+         <table align='center'; width=1500px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Dancing.mp4"	
+                      width="500px">
+                    </video>			<br>
+                    <h6>Input video - Dancing </h6>
+                  </center>  
+              </td>
+              
+              <td width="280px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Dancing_R05.mp4"	
+                      width="280px", height="280px">
+                    </video>			<br> 
+                    <h6>Resize to 50% of width </h6>                       
+                  </center>  
+              </td>              
+              
+              <td width="650px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/Dancing_R125.mp4"	
+                        width="650px", height="280px">
+                      </video>			<br> 
+                      <h6>Enlarging to 125% of width </h6>
+                    </center>                
+              </td>
+            </tr>
+         </table>
+
+         <table align='center'; width=1500px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Masha.mp4"	
+                      width="500px">
+                    </video>			
+                    <h6>Input video - Masan</h6>
+                  </center>  
+              </td>
+              
+              <td width="280px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Masha_R05.mp4"	
+                      width="280px", height="280px">
+                    </video>			
+                    <h6>Reducing to 50% of width</h6>
+                  </center>  
+              </td>              
+              
+              <td width="650px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/Masha_R125.mp4"	
+                        width="650px", height="280px">
+                      </video>			
+                      <h6>Enlarging to 125% of width</h6>
+                    </center>                
+              </td>
+            </tr>
+         </table>
+
+         <table align='center'; width=1500px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Talk.mp4"	
+                      width="500px">
+                    </video>			
+                    <h6>Input video - Talk</h6>
+                  </center>  
+              </td>
+              
+              <td width="280px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Talk_05.mp4"	
+                      width="280px", height="280px">
+                    </video>			
+                    <h6>Reducing to 50% of width</h6>
+                  </center>  
+              </td>              
+              
+              <td width="650px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/Talk_125.mp4"	
+                        width="650px", height="280px">
+                      </video>			
+                      <h6>Enlarging to 125% of width</h6>
+                    </center>                
+              </td>
+            </tr>
+         </table>
+
+         <table align='center'; width=1500px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/holding_mug.mp4"	
+                      width="500px">
+                    </video>			
+                    <h6>Input video - Holding mug</h6>
+                  </center>  
+              </td>
+              
+              <td width="280px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/holding_mug_R05.mp4"	
+                      width="280px", height="280px">
+                    </video>			
+                    <h6>Reducing to 50% of width</h6>
+                  </center>  
+              </td>              
+              
+              <td width="650px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/holding_mug_R125.mp4"	
+                        width="650px", height="280px">
+                      </video>			
+                      <h6>Enlarging to 125% of width</h6>
+                    </center>                
+              </td>
+            </tr>
+         </table>
+
+
+         <table align='center'; width=1500px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Packing_gift.mp4"	
+                      width="500px">
+                    </video>			
+                    <h6>Input video - Packing gift</h6>
+                  </center>  
+              </td>
+              
+              <td width="280px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Packing_gift_R05.mp4"	
+                      width="280px", height="280px">
+                    </video>			
+                    <h6>Reducing to 50% of width</h6>
+                  </center>  
+              </td>              
+              
+              <td width="650px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/Packing_gift_R125.mp4"	
+                        width="650px", height="280px">
+                      </video>			
+                      <h6>Enlarging to 125% of width</h6>
+                    </center>                
+              </td>
+            </tr>
+         </table>
+
+         
+         <table align='center'; width=1500px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Moana.mp4"	
+                      width="500px", height="280px">
+                    </video>			
+                    <h6>Input video - Moana movie</h6>
+                  </center>  
+              </td>
+              
+              <td width="280px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Moana_R05.mp4"	
+                      width="280px", height="280px">
+                    </video>			
+                    <h6>Reducing to 50% of width</h6>
+                  </center>  
+              </td>              
+              
+              <td width="650px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/Moana_R125.mp4"	
+                        width="650px", height="280px">
+                      </video>			
+                      <h6>Enlarging to 125% of width</h6>
+                    </center>                
+              </td>
+            </tr>
+         </table>
+
+         <table align='center'; width=1500px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Rabit.mp4"	
+                      width="500px">
+                    </video>			
+                    <h6>Input video - Rabits</h6>
+                  </center>  
+              </td>
+              
+              <td width="280px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Rabit_R05.mp4"	
+                      width="280px", height="280px">
+                    </video>			
+                    <h6>Reducing to 50% of width</h6>
+                  </center>  
+              </td>              
+              
+              <td width="650px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/Rabit_R125.mp4"	
+                        width="650px", height="280px">
+                      </video>			
+                      <h6>Enlarging to 125% of width</h6>
+                    </center>                
+              </td>
+            </tr>
+         </table>
+
+       
+                  
+         <table align='center'; width=1500px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Shewing.mp4"	
+                      width="500px">
+                    </video>			
+                    <h6>Input video - Shewing</h6>
+                  </center>  
+              </td>
+              
+              <td width="280px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Shewing_R05.mp4"	
+                      width="280px", height="280px">
+                    </video>			
+                    <h6>Reducing to 50% of width</h6>
+                  </center>  
+              </td>              
+              
+              <td width="650px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/Shewing_R125.mp4"	
+                        width="650px", height="280px">
+                      </video>			
+                      <h6>Enlarging to 125% of width</h6>
+                    </center>                
+              </td>
+            </tr>
+         </table>
+
+         <table align='center'; width=1500px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Uptown_3.mp4"	
+                      width="500px">
+                    </video>			
+                    <h6>Input video - Uptown Dance</h6>
+                  </center>  
+              </td>
+              
+              <td width="280px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Uptown_3_R05.mp4"	
+                      width="280px", height="280px">
+                    </video>			
+                    <h6>Reducing to 50% of width</h6>
+                  </center>  
+              </td>              
+              
+              <td width="650px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/Uptown_3_R125.mp4"	
+                        width="650px", height="280px">
+                      </video>			
+                      <h6>Enlarging to 125% of width</h6>
+                    </center>                
+              </td>
+            </tr>
+         </table>
+         <table align='center'; width=1500px; style="color:burlywood">
+          <table>
+            <tr>
+              <td width="500px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Cap_No7_6.mp4"	
+                      width="500px">
+                    </video>			
+                    <h6>Input video - Movie</h6>
+                  </center>  
+              </td>
+              
+              <td width="280px">
+                <center>
+                  <video autoplay controls muted loop
+                      src="./data/Cap_No7_6_R05.mp4"	
+                      width="280px", height="280px">
+                    </video>			
+                    <h6>Reducing to 50% of width</h6>
+                  </center>  
+              </td>              
+              
+              <td width="650px">
+                  <center>
+                    <video autoplay controls muted loop
+                        src="./data/Cap_No7_6_R125.mp4"	
+                        width="650px", height="280px">
+                      </video>			
+                      <h6>Enlarging to 125% of width</h6>
+                    </center>                
+              </td>
+            </tr>
+         </table>
+
+
+          <table align='center'; width="1000px">                    
+            <td width="1000px">
+              <tr>                
+                  <justify><h4 style="color:rgb(150, 101, 150);font-size:24.0pt; font-weight: bold"><a id="id_comparison">Comparisons</a></h4></justify>
+                  <hr>                 
+                </tr>
+              </td>   
+         </table>
+     
+
+          <table align='center'; width=1200px;>
+            <tbody>
+              <tr>
+                
+                <td align="justify" width = "1000px">               
+                  
+                  <h5>We compare our RETVI with a conventional video retargeting method, [Lin et al]. Two major drawbacks could be obviously seen in Lin's results here. 
+                    First, the video is not stable. Flickering artifact occurs seriously in the background. Second, the shapes of main objects in video 
+                  are distorted or shrinking. Our RETVI can produce results without these phenomena.</h5>                
+                </td>
+                
+              </tr>
+            </table>
+  
+
+          <table align='center'; width=1000px; style="color:burlywood">
+            <tr>	          			    	
+                <td width="1200px">
+                  <center>                     
+                    <video autoplay controls muted loop
+                      src="./data/Compare_Lin_a_site.mp4">
+                    </video>			<br>                            
+                    </center>    
+                </td>		                                  
+                 
+            </tr>
+        </table>
+        
+        <table align='center'; width=1000px; style="color:burlywood">
+          <tr>	          			    	
+              <td width="1200px">
+                <center>                     
+                  <video autoplay controls muted loop
+                    src="./data/Compare_Lin_2_site.mp4">
+                  </video>			<br>                  
+                  </center>    
+              </td>		                                  
+               
+          </tr>
+      </table>
+      <hr>
+      <table align='center'; width=1200px;>
+        <tbody>
+          <tr>
+            
+            <td align="justify" width = "1200px">               
+              
+              <h5>We compare our RETVI with a commercial application, Adobe, on the performance of resizing video to 9:16 aspect ratio.
+                This is the case that the video is with multiple moving object and camera-move. As Adobe uses a window of size 9:16 is allocated at the middle of video and 
+                they manually crop two sides of video, they can keep the ratio of object in the same as in the input video
+                The shape of objects may be smaller than those by Adobe, but it can capture the tasteful moment on each frame and appear visually pleasing.
+               </h5>                
+            </td>
+                   
+          </tr>
+        </table>
+                  
+         <table align='center'; width=1200px; style="color:burlywood">
+          <tr>	          			    	
+            <td width="1200px">
+              <center>                     
+                <video autoplay controls muted loop
+                  src="./data/Compare_Adobe_site.mp4">
+                </video>								                      
+                </center>    
+            </td>		                                      
+        </tr>
+         </table>   
+
+          <table align='center'; width="1000px">                    
+            <td width="1000px">
+              <tr>                
+                  <justify><h4 style="color:rgb(150, 101, 150);font-size:24.0pt; font-weight: bold"><a id="id_comparison_image">Our RETVI performs on retargeting single images</a></h4></justify>
+                  <hr>                 
+                </tr>
+              </td>   
+         </table>
+        
+        <table align='center'; width=1000px;>
+          <tbody>
+            <tr>
+              
+              <td align="justify" width = "1000px">              
+                
+                <h5>Alike video content, our approach also performs well on different image contents,
+                  i.e., portrait image, shaped object, multiple objects, line structure. 
+                  Images with reflection symmetry are challenging when retargeted by seam carving operator.
+                  The image in the last row consists of line structure and symmetrical structure. 
+                  Our RETVI still works well and produces appealing results without distortion.
+                  </h5>                
+              </td>
+                        
+            </tr>
+          </table>          
+         <table align='center'; width=1200px; style="color:burlywood">
+          <tr>
+            <td width="1000px">
+                <center>
+                  <img 	src="./data/Result_3.jpg", width="1000px">		<br><br>                  
+                  </center>    
+              </td>    
+          </tr>
+         </table>
+         <hr>
+         <table align='center'; width=1000px;>
+            <tbody>
+              <tr>
+               
+                <td align="justify" width = "1000px">               
+                  
+                  <h5>Here we further demonstrate the ability of our method via visual comparison with four recent state-of-the-art image retargeting systems, 
+                    WSSDCNN, SAMIR, grid encoding model, and Cycle-IR.
+                    </h5>                
+                </td>
+                             
+              </tr>
+          </table>   
+         
+         <table align='center'; width=1200px; style="color:burlywood">
+          <tr>
+            <td width="1000px">
+                <center>
+                  <img 	src="./data/Compare_images.png", width="1000px">		<br><br>                  
+                  </center>    
+              </td>    
+          </tr>
+         </table>
+
+</div>
+<hr>
+
+<footer> 
+  <center>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  </center>
+  
+</footer>
+
+</body>
+</html>
